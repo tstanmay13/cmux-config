@@ -1,0 +1,15 @@
+# cmux UI and terminal ergonomics
+# The full theme and shaders live in github.com/tstanmay13/ghostty-config.
+macos-option-as-alt = true
+keybind = alt+backspace=text:\x17
+
+font-size = 14
+sidebar-font-size = 15
+surface-tab-bar-font-size = 13
+window-padding-x = 8
+window-padding-y = 6
+window-padding-balance = true
+mouse-hide-while-typing = true
+scrollback-limit = 10000000
+cursor-style = block
+cursor-style-blink = false

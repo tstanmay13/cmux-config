@@ -1,0 +1,86 @@
+{
+  "$schema": "https://raw.githubusercontent.com/manaflow-ai/cmux/main/web/data/cmux.schema.json",
+  "schemaVersion": 1,
+
+  "app": {
+    "workspaceInheritWorkingDirectory": true,
+    "openMarkdownInCmuxViewer": true,
+    "openSupportedFilesInCmux": true,
+    "commandPaletteSearchesAllSurfaces": true,
+    "focusHistoryIncludesPanesAndTabs": true,
+    "newWorkspacePlacement": "afterCurrent",
+    "reorderOnNotification": false,
+    "warnBeforeClosingTab": true
+  },
+
+  "terminal": {
+    "showScrollBar": false,
+    "scrollSpeed": 1.25,
+    "copyOnSelect": false,
+    "autoResumeAgentSessions": true,
+    "showTextBoxOnNewTerminals": false
+  },
+
+  "notifications": {
+    "dockBadge": true,
+    "showInMenuBar": true,
+    "unreadPaneRing": true,
+    "paneFlash": true,
+    "suppressOnlyFocusedSurface": true,
+    "agentPermissionPrompt": true,
+    "agentTurnComplete": "whenIdle",
+    "agentIdleReminder": false,
+    "sound": "Ping"
+  },
+
+  "sidebar": {
+    "hideAllDetails": false,
+    "wrapWorkspaceTitles": false,
+    "showWorkspaceDescription": true,
+    "branchLayout": "inline",
+    "showNotificationMessage": true,
+    "notificationMessageLineLimit": 3,
+    "showBranchDirectory": true,
+    "pathLastSegmentOnly": true,
+    "showPullRequests": true,
+    "watchGitStatus": true,
+    "makePullRequestsClickable": true,
+    "openPullRequestLinksInCmuxBrowser": true,
+    "openPortLinksInCmuxBrowser": true,
+    "showPorts": true,
+    "showSSH": true,
+    "showLog": true,
+    "showProgress": true,
+    "showAgentActivity": true
+  },
+
+  "automation": {
+    "socketControlMode": "cmuxOnly",
+    "suppressSubagentNotifications": true,
+    "claudeCodeIntegration": true
+  },
+
+  "browser": {
+    "openTerminalLinksInCmuxBrowser": true,
+    "interceptTerminalOpenCommandInCmuxBrowser": true,
+    "defaultZoomLevel": 1.15,
+    "discardHiddenWebViews": true,
+    "hiddenWebViewDiscardDelaySeconds": 300,
+    "theme": "system"
+  },
+
+  "markdown": {
+    "fontSize": 15,
+    "maxWidth": 980
+  },
+
+  "diffViewer": {
+    "defaultLayout": "split"
+  },
+
+  "shortcuts": {
+    "bindings": {
+      "reopenClosedWorkspace": "cmd+shift+opt+t"
+    }
+  }
+}
