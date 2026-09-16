@@ -12,6 +12,7 @@ My personal [cmux](https://cmux.com/) setup for running Claude Code and Codex be
 - Opens terminal links, pull requests, and local ports in cmux's embedded browser at 115% zoom.
 - Uses side-by-side diffs and cmux's Markdown viewer.
 - Keeps terminal text at 14pt, sidebar text at 15pt, and surface tabs at 13pt.
+- Creates an isolated STLabs Git worktree when starting a workspace with `Cmd-N`.
 
 No tokens, credentials, generated hook files, session data, or machine IDs are stored here.
 
@@ -40,7 +41,7 @@ It validates the cmux config, installs the maintained Codex hooks, and reloads a
 
 | Shortcut | Action |
 | --- | --- |
-| `Cmd-N` | New workspace |
+| `Cmd-N` | Prompt for a task and create a new STLabs worktree workspace |
 | `Cmd-T` | New surface in the focused pane |
 | `Cmd-D` | Split right |
 | `Cmd-Shift-D` | Split down |
@@ -56,6 +57,28 @@ It validates the cmux config, installs the maintained Codex hooks, and reloads a
 | `Cmd-Shift-,` | Reload configuration |
 
 The main workspace sidebar stays on the left. `Cmd-Option-B` toggles cmux's auxiliary right sidebar, and `Cmd-B` hides or shows the workspace sidebar.
+
+## Worktree workspaces
+
+From anywhere inside the STLabs repository, press `Cmd-N` and enter a short task name such as `Ticket search timeout`. The helper normalizes that text to `ticket-search-timeout`, previews the result, and asks for confirmation before it creates:
+
+```text
+branch:   tanmaysingh/ticket-search-timeout
+base:     origin/main
+worktree: ~/Documents/stlabs/worktrees/ticket-search-timeout
+```
+
+The new workspace stays attached to its normal interactive shell, changes into the worktree, and is renamed to the task slug. Branch or path collisions are refused. Worktrees are never removed automatically.
+
+Outside the STLabs repository, `Cmd-N` creates a normal workspace in the inherited directory. The New Workspace menu also includes **Blank Workspace** when you intentionally do not want a worktree.
+
+Remove a finished worktree manually after its changes are committed or otherwise preserved:
+
+```bash
+git worktree list
+git worktree remove ~/Documents/stlabs/worktrees/<task>
+git branch -d tanmaysingh/<task>
+```
 
 ## Useful commands
 

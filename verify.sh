@@ -19,6 +19,13 @@ check_link() {
 check_link "$HOME/.config/cmux/cmux.json" "$repo_dir/cmux/cmux.json"
 check_link "$HOME/.config/ghostty/config" "$repo_dir/ghostty/config"
 
+if bash -n "$repo_dir/scripts/new-worktree-workspace.sh"; then
+  echo "OK worktree workspace helper syntax"
+else
+  echo "FAIL worktree workspace helper syntax"
+  failed=1
+fi
+
 if command -v cmux >/dev/null 2>&1; then
   cmux config doctor
 else
