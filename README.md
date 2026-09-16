@@ -28,12 +28,14 @@ cd ~/Documents/personal/cmux-config
 ./verify.sh
 ```
 
-The installer creates timestamped backups under `~/.config/cmux-config-backups/`, then symlinks the tracked files into:
+The installer creates timestamped backups under `~/.config/cmux-config-backups/`, then installs the tracked files as follows:
 
 ```text
-cmux/cmux.json  -> ~/.config/cmux/cmux.json
-ghostty/config  -> ~/.config/ghostty/config
+cmux/cmux.json  copied to ~/.config/cmux/cmux.json
+ghostty/config  linked to ~/.config/ghostty/config
 ```
+
+`cmux.json` is copied deliberately. cmux caches the metadata of that exact path, so a file symlink can hide changes made to its target even after a configuration reload. The repository remains the source of truth; rerun `./install.sh` after changing or pulling the config.
 
 It validates the cmux config, installs the maintained Codex hooks, and reloads a running cmux app. Claude Code integration is enabled directly in `cmux.json` and is injected by cmux's Claude wrapper.
 
@@ -60,7 +62,7 @@ The main workspace sidebar stays on the left. `Cmd-Option-B` toggles cmux's auxi
 
 ## Worktree workspaces
 
-From anywhere inside the STLabs repository, press `Cmd-N` and enter a short task name such as `Ticket search timeout`. `Cmd-N` is bound directly to this action; cmux's built-in blank-workspace binding is disabled. The helper normalizes that text to `ticket-search-timeout`, previews the result, and asks for confirmation before it creates:
+From anywhere inside the STLabs repository, press `Cmd-N` and enter a short task name such as `Ticket search timeout`. The helper normalizes that text to `ticket-search-timeout`, previews the result, and asks for confirmation before it creates:
 
 ```text
 branch:   tanmaysingh/ticket-search-timeout
@@ -95,12 +97,13 @@ cmux reload-config
 
 ## Updating the saved setup
 
-The installed files are symlinks into this checkout, so edits under `cmux/` or `ghostty/` apply after `Cmd-Shift-,`. Commit and push those edits to carry them to other Macs.
+The Ghostty file is linked into this checkout. The cmux file is a managed copy, so rerun the installer after editing or pulling it. Commit and push changes to carry them to other Macs.
 
 ```bash
+./install.sh
 cmux config doctor
 ./verify.sh
-git add cmux ghostty
+git add cmux ghostty scripts install.sh verify.sh README.md
 git commit -m "Update cmux configuration"
 git push
 ```

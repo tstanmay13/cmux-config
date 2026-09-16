@@ -16,7 +16,19 @@ check_link() {
   fi
 }
 
-check_link "$HOME/.config/cmux/cmux.json" "$repo_dir/cmux/cmux.json"
+check_file() {
+  local target_path="$1"
+  local expected_path="$2"
+
+  if [ -f "$target_path" ] && [ ! -L "$target_path" ] && cmp -s "$target_path" "$expected_path"; then
+    echo "OK $target_path"
+  else
+    echo "FAIL $target_path is not an installed copy of $expected_path"
+    failed=1
+  fi
+}
+
+check_file "$HOME/.config/cmux/cmux.json" "$repo_dir/cmux/cmux.json"
 check_link "$HOME/.config/ghostty/config" "$repo_dir/ghostty/config"
 
 if bash -n "$repo_dir/scripts/new-worktree-workspace.sh"; then

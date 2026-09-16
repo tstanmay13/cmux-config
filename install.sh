@@ -28,8 +28,31 @@ link_config() {
   echo "  linked: $target_path -> $source_path"
 }
 
+install_config() {
+  local source_path="$1"
+  local target_path="$2"
+  local relative_target="${target_path#"$HOME"/}"
+
+  mkdir -p "$(dirname "$target_path")"
+
+  if [ -f "$target_path" ] && [ ! -L "$target_path" ] && cmp -s "$source_path" "$target_path"; then
+    echo "  already installed: $target_path"
+    return
+  fi
+
+  if [ -e "$target_path" ] || [ -L "$target_path" ]; then
+    mkdir -p "$backup_root/$(dirname "$relative_target")"
+    cp -a "$target_path" "$backup_root/$relative_target"
+    echo "  backed up: $target_path"
+  fi
+
+  rm -f "$target_path"
+  cp "$source_path" "$target_path"
+  echo "  installed: $source_path -> $target_path"
+}
+
 echo "Installing cmux configuration from $repo_dir"
-link_config "$repo_dir/cmux/cmux.json" "$HOME/.config/cmux/cmux.json"
+install_config "$repo_dir/cmux/cmux.json" "$HOME/.config/cmux/cmux.json"
 link_config "$repo_dir/ghostty/config" "$HOME/.config/ghostty/config"
 
 if command -v cmux >/dev/null 2>&1; then

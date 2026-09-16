@@ -84,7 +84,6 @@
       "title": "New Git Worktree",
       "subtitle": "Create tanmaysingh/<task> from origin/main",
       "commandName": "New Git Worktree",
-      "shortcut": "cmd+n",
       "icon": {
         "type": "symbol",
         "name": "arrow.triangle.branch"
@@ -126,7 +125,6 @@
 
   "shortcuts": {
     "bindings": {
-      "newTab": null,
       "reopenClosedWorkspace": "cmd+shift+opt+t"
     }
   }
