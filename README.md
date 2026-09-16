@@ -60,7 +60,7 @@ The main workspace sidebar stays on the left. `Cmd-Option-B` toggles cmux's auxi
 
 ## Worktree workspaces
 
-From anywhere inside the STLabs repository, press `Cmd-N` and enter a short task name such as `Ticket search timeout`. The helper normalizes that text to `ticket-search-timeout`, previews the result, and asks for confirmation before it creates:
+From anywhere inside the STLabs repository, press `Cmd-N` and enter a short task name such as `Ticket search timeout`. `Cmd-N` is bound directly to this action; cmux's built-in blank-workspace binding is disabled. The helper normalizes that text to `ticket-search-timeout`, previews the result, and asks for confirmation before it creates:
 
 ```text
 branch:   tanmaysingh/ticket-search-timeout
