@@ -3,7 +3,7 @@
 # This file is sourced by a new cmux workspace so its final `cd` changes the
 # interactive shell's directory. Keep all variables local to avoid polluting it.
 _cmux_new_worktree_main() {
-  local repo_root remote_url task_name slug branch worktree_root worktree_path answer
+  local repo_root remote_url task_name slug branch worktree_root worktree_path
 
   repo_root="$(git rev-parse --show-toplevel 2>/dev/null)" || {
     printf 'Not inside a Git repository; leaving this as a normal workspace.\n'
@@ -66,17 +66,6 @@ _cmux_new_worktree_main() {
   printf 'Branch:   %s\n' "$branch"
   printf 'Base:     origin/main\n'
   printf 'Worktree: %s\n\n' "$worktree_path"
-
-  if [ "${CMUX_WORKTREE_ASSUME_YES:-0}" != "1" ]; then
-    printf 'Create this worktree? [Y/n] '
-    IFS= read -r answer
-    case "$answer" in
-      n|N|no|NO|No)
-        printf 'Cancelled; no worktree was created.\n'
-        return 0
-        ;;
-    esac
-  fi
 
   if [ "${CMUX_WORKTREE_DRY_RUN:-0}" = "1" ]; then
     printf 'Dry run: no worktree was created.\n'
