@@ -82,7 +82,7 @@
     "new-git-worktree": {
       "type": "workspaceCommand",
       "title": "New Git Worktree",
-      "subtitle": "Create tanmaysingh/<task> from origin/main",
+      "subtitle": "Create a task worktree for the current Git repository",
       "commandName": "New Git Worktree",
       "icon": {
         "type": "symbol",
@@ -114,7 +114,7 @@
   "commands": [
     {
       "name": "New Git Worktree",
-      "description": "Create tanmaysingh/<task> from origin/main and enter its worktree",
+      "description": "Create a task branch for the current Git repository and enter its worktree",
       "workspace": {
         "name": "New Worktree",
         "cwd": ".",
