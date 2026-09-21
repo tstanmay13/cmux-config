@@ -6,7 +6,7 @@ My personal [cmux](https://cmux.com/) setup for running Claude Code and Codex be
 
 - Keeps workspaces in a stable order and places new workspaces after the current one.
 - Shows concise Git branch, pull request, port, progress, and agent state in the sidebar.
-- Sends permission and completed-turn alerts through cmux, with pane rings and a Dock badge.
+- Sends permission and completed-turn alerts through cmux silently, with pane rings and a Dock badge but no sound.
 - Enables Claude Code integration and installs cmux's maintained Codex lifecycle hooks.
 - Restores supported agent sessions after relaunch.
 - Opens terminal links, pull requests, and local ports in cmux's embedded browser at 115% zoom.

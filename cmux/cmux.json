@@ -30,7 +30,7 @@
     "agentPermissionPrompt": true,
     "agentTurnComplete": "whenIdle",
     "agentIdleReminder": false,
-    "sound": "Ping"
+    "sound": "none"
   },
 
   "sidebar": {
