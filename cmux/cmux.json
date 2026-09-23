@@ -89,6 +89,14 @@
         "name": "arrow.triangle.branch"
       },
       "palette": true
+    },
+    "blank-workspace": {
+      "type": "builtin",
+      "builtin": "cmux.newWorkspace",
+      "title": "Blank Workspace",
+      "subtitle": "Create a normal workspace without a worktree",
+      "shortcut": "cmd+shift+n",
+      "newWorkspaceMenu": false
     }
   },
 
@@ -125,7 +133,8 @@
 
   "shortcuts": {
     "bindings": {
-      "reopenClosedWorkspace": "cmd+shift+opt+t"
+      "reopenClosedWorkspace": "cmd+shift+opt+t",
+      "newWindow": "none"
     }
   }
 }

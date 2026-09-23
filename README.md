@@ -44,6 +44,7 @@ It validates the cmux config, installs the maintained Codex hooks, and reloads a
 | Shortcut | Action |
 | --- | --- |
 | `Cmd-N` | Prompt for a task and create a worktree for the current Git repository |
+| `Cmd-Shift-N` | Create a blank workspace (no worktree) |
 | `Cmd-T` | New surface in the focused pane |
 | `Cmd-D` | Split right |
 | `Cmd-Shift-D` | Split down |
@@ -72,7 +73,7 @@ worktree: ../my-repo-worktrees/ticket-search-timeout
 
 By default, worktrees live in a `<repository>-worktrees` directory beside the canonical checkout. The new workspace stays attached to its normal interactive shell, changes into the worktree, and is renamed to the task slug. Branch or path collisions are refused. Worktrees are never removed automatically.
 
-Repositories without a remote branch from the current `HEAD`. Outside a Git repository, `Cmd-N` creates a normal workspace in the inherited directory. The New Workspace menu also includes **Blank Workspace** when you intentionally do not want a worktree.
+Repositories without a remote branch from the current `HEAD`. Outside a Git repository, `Cmd-N` creates a normal workspace in the inherited directory. `Cmd-Shift-N` and the New Workspace menu's **Blank Workspace** item create a plain workspace when you intentionally do not want a worktree.
 
 The defaults can be overridden per repository:
 
