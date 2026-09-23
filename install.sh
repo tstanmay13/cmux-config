@@ -53,7 +53,20 @@ install_config() {
 
 echo "Installing cmux configuration from $repo_dir"
 install_config "$repo_dir/cmux/cmux.json" "$HOME/.config/cmux/cmux.json"
-link_config "$repo_dir/ghostty/config" "$HOME/.config/ghostty/config"
+link_config "$repo_dir/ghostty/cmux.conf" "$HOME/.config/ghostty/cmux.conf"
+
+# ~/.config/ghostty/config belongs to ghostty-config (or to you); it pulls these
+# settings in with `config-file = ?cmux.conf`. Create a minimal one if none exists.
+ghostty_main="$HOME/.config/ghostty/config"
+if [ -L "$ghostty_main" ] && [ "$(readlink "$ghostty_main")" = "$repo_dir/ghostty/config" ]; then
+  rm "$ghostty_main"  # link left over from when this repo owned the whole file
+fi
+if [ ! -e "$ghostty_main" ]; then
+  printf 'config-file = ?cmux.conf\n' > "$ghostty_main"
+  echo "  created: $ghostty_main (includes cmux.conf)"
+elif ! grep -q 'cmux\.conf' "$ghostty_main"; then
+  echo "  NOTE: add 'config-file = ?cmux.conf' to $ghostty_main so cmux and Ghostty load these settings"
+fi
 
 if command -v cmux >/dev/null 2>&1; then
   cmux config doctor

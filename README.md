@@ -18,7 +18,7 @@ No tokens, credentials, generated hook files, session data, or machine IDs are s
 
 ## Install on a new Mac
 
-Install [cmux](https://cmux.com/docs/getting-started), Codex, and Claude Code first. For the complete Catppuccin theme and cursor shaders, install [ghostty-config](https://github.com/tstanmay13/ghostty-config) before this repository.
+Install [cmux](https://cmux.com/docs/getting-started), Codex, and Claude Code first. For the complete Catppuccin theme and cursor shaders, also install [ghostty-config](https://github.com/tstanmay13/ghostty-config); the two can be installed in either order.
 
 ```bash
 mkdir -p ~/Documents/personal
@@ -32,8 +32,10 @@ The installer creates timestamped backups under `~/.config/cmux-config-backups/`
 
 ```text
 cmux/cmux.json  copied to ~/.config/cmux/cmux.json
-ghostty/config  linked to ~/.config/ghostty/config
+ghostty/cmux.conf  linked to ~/.config/ghostty/cmux.conf
 ```
+
+This repository does not own `~/.config/ghostty/config`. That file (from ghostty-config, or your own) loads the cmux tweaks with `config-file = ?cmux.conf`. If the file does not exist, the installer creates one containing just that line; if it exists without the line, the installer tells you to add it.
 
 `cmux.json` is copied deliberately. cmux caches the metadata of that exact path, so a file symlink can hide changes made to its target even after a configuration reload. The repository remains the source of truth; rerun `./install.sh` after changing or pulling the config.
 

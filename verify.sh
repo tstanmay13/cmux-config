@@ -29,7 +29,14 @@ check_file() {
 }
 
 check_file "$HOME/.config/cmux/cmux.json" "$repo_dir/cmux/cmux.json"
-check_link "$HOME/.config/ghostty/config" "$repo_dir/ghostty/config"
+check_link "$HOME/.config/ghostty/cmux.conf" "$repo_dir/ghostty/cmux.conf"
+
+if grep -q 'cmux\.conf' "$HOME/.config/ghostty/config" 2>/dev/null; then
+  echo "OK ~/.config/ghostty/config includes cmux.conf"
+else
+  echo "FAIL ~/.config/ghostty/config does not include cmux.conf (add: config-file = ?cmux.conf)"
+  failed=1
+fi
 
 if bash -n "$repo_dir/scripts/new-worktree-workspace.sh"; then
   echo "OK worktree workspace helper syntax"
