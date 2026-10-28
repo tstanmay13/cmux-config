@@ -47,7 +47,7 @@
     "makePullRequestsClickable": true,
     "openPullRequestLinksInCmuxBrowser": true,
     "openPortLinksInCmuxBrowser": true,
-    "showPorts": true,
+    "showPorts": false,
     "showSSH": true,
     "showLog": true,
     "showProgress": true,
